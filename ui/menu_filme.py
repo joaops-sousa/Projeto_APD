@@ -53,7 +53,7 @@ def exibir_menu_filme():
     run_filme = True
     menu = ("\n----------------\n"+
              "(1) Adicionar Filme \n" +
-             "(2) Listar Filme \n" +
+             "(2) Listar Filmes \n" +
              "(3) Buscar Filme por Código \n" +
              "(4) Buscar Filmes por Gênero \n" +
              "(5) Remover Filme \n"+

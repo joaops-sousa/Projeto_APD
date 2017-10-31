@@ -20,6 +20,11 @@ def remover_usuario(cpf):
             return True
     return False
 
+def remover_todos_usuarios():
+    global usuarios
+    usuarios = []
+    return usuarios
+
 def iniciar_usuarios():
     adicionar_usuario(111111,"Jorge","jorge@gmail.com","senha1")
     adicionar_usuario(222222,"Fabio","fabio@gmail.com","senha2")

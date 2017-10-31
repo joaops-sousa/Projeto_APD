@@ -1,6 +1,6 @@
-import usuario
-import filme
-import historico
+from logica import usuario
+from logica import filme
+from logica import historico
 
 avaliacoes = []
 
@@ -22,3 +22,17 @@ def avaliar_filme(cpf,cod_filme,nota):
         avaliacao = [cpf,user[1],cod_filme,movie[1],nota]
         avaliacoes.append(avaliacao)
         return True
+
+def listar_avaliacoes():
+    return avaliacoes
+
+def listar_avaliacoes_por_cpf(cpf):
+    aux = []
+    for a in avaliacoes:
+        if cpf == a[0]:
+            aux.append(a)
+    return aux
+
+def remover_todas_avaliacoes():
+    global avaliacoes
+    avaliacoes = []

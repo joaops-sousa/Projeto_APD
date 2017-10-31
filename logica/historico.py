@@ -1,21 +1,33 @@
-import usuario
-import filme
+from logica import usuario
+from logica import filme
 
-filmes_assistidos=[]
+historico_geral =[]
 
 def registrar_filme_assistido(cod_filme,cpf):
     user = usuario.buscar_usuario(cpf)
     movie = filme.buscar_filme(cod_filme)
-    aux = [user,movie]
-    filmes_assistidos.append(aux)
+    if user == None or movie == None:
+        return False
+    else:
+        aux = [user,movie]
+        historico_geral.append(aux)
+        return True
 
 def listar_filmes_assistidos(cpf):
     user = usuario.buscar_usuario(cpf)
-    aux = []
-    for f in filmes_assistidos:
+    filmes_assistidos = []
+    for f in historico_geral:
         if f[0] == user:
-            aux.append(f[1])
-    if len(aux) < 1:
+            filmes_assistidos.append(f[1])
+    if len(filmes_assistidos) < 1:
         return None
     
-    return aux
+    return filmes_assistidos
+
+def listar_historico_geral():
+    return historico_geral
+
+def remover_todos_historicos():
+    global historico_geral
+    historico_geral = []
+    

@@ -9,8 +9,9 @@ def __gerar_cod_filme():
 def adicionar_filme(titulo,genero,ano):
     cod_filme = __gerar_cod_filme()
 
-    filme = [cod_filme,titulo,genero,ano]
+    filme = [cod_filme,titulo,genero.lower(),ano]
     filmes.append(filme)
+    return cod_filme
 
 def listar_filmes():
     return filmes
@@ -37,6 +38,12 @@ def remover_filme(cod_filme):
             filmes.remove(f)
             return True
     return False
+
+def remover_todos_filmes():
+    global filmes
+    global codigo_filmes
+    filmes = []
+    codigo_filmes = 0
 
 def iniciar_filmes():
     adicionar_filme("Mercenários","ação",2010)
