@@ -25,7 +25,7 @@ def menu_buscar():
     print("\nBuscar Filme por Código \n")
     cod = int(input("Código: "))
     f = filme.buscar_filme(cod)
-    if cod == None:
+    if f == None:
         print("Filme não encontrado.")
     else:
         imprimir_filme(f)
