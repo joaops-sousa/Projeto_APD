@@ -1,4 +1,5 @@
 from logica import usuario
+from logica import historico
 
 def menu_adicionar():
     print("\nAdicionar Usuário \n")
@@ -35,10 +36,34 @@ def menu_remover():
     cpf = int(input("CPF: "))
     u = usuario.remover_usuario(cpf)
     if u == False:
+        print("\nUsuário não encontrado.")
+    else:
+        print("\nUsuário Removido.")
+
+def menu_exibir_historico():
+    print("\nExibir Histórico do Usuário por CPF \n")
+    cpf = int(input("CPF: "))
+    u = usuario.buscar_usuario(cpf)
+    hist = historico.listar_filmes_assistidos(cpf)
+    if hist == None:
+        print("\nSeu histórico está vazio.")
+    else:
+        imprimir_usuario(u)
+        print("\nHistórico: ")
+        for h in hist:
+            print(h)
+
+def menu_limpar_historico():
+    print("\nLimpar Histórico do Usuário por CPF \n")
+    cpf = int(input("CPF: "))
+    h = historico.limpar_historico(cpf)
+
+    if h == False:
         print("Usuário não encontrado.")
     else:
-        print("Usuário Removido.")
-
+        print("Histórico removido.")
+            
+    
 def exibir_menu_usuario():
     run_usuario = True
     menu = ("\n----------------\n"+
@@ -46,6 +71,8 @@ def exibir_menu_usuario():
              "(2) Listar Usuários \n" +
              "(3) Buscar Usuário por CPF \n" +
              "(4) Remover Usuário \n" +
+             "(5) Exibir Histórico do Usuário por CPF \n"+
+             "(6) Limpar Histórico do Usuário por CPF \n"+
              "(0) Voltar\n"+
             "----------------")
 
@@ -61,5 +88,9 @@ def exibir_menu_usuario():
             menu_buscar()
         elif op==4:
             menu_remover()
+        elif op == 5:
+            menu_exibir_historico()
+        elif op == 6:
+            menu_limpar_historico()
         elif op==0:
             run_usuario = False

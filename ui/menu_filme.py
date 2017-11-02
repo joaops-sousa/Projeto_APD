@@ -1,4 +1,5 @@
 from logica import filme
+from logica import reproducao
 
 def menu_adicionar():
     print("\nAdicionar Filme \n")
@@ -49,6 +50,40 @@ def menu_remover():
     else:
         print("Filme Removido.")
 
+def menu_player():
+    run_movie = True
+    m = ("\n----------------\n"+
+         "(0) Encerrar Filme \n"+
+         "(1) Pausar Filme\n"+
+         "----------------")
+
+    while run_movie:
+        print()
+        print("Reproduzindo Filme...")
+        print(m)
+        comando = int(input("Digite o comando: "))
+
+        if comando == 0:
+            run_movie = False
+            print("Filme encerrado.")
+        elif comando == 1:
+            print()
+            print("Filme pausado.")
+            c = input("Aperte enter para despausar.")
+        else:
+            print("Comando inválido")
+
+def menu_reproduzir_filme():
+    print("\nReproduzir Filme escolhido\n")
+    cpf = int(input("CPF: "))
+    codigo = int(input("Código Filme: "))
+
+    ok = reproducao.reproduzir_filme(cpf,codigo)
+    if ok == False:
+        print("Dados não encontrados.")
+    else:
+        menu_player()
+
 def exibir_menu_filme():
     run_filme = True
     menu = ("\n----------------\n"+
@@ -57,6 +92,7 @@ def exibir_menu_filme():
              "(3) Buscar Filme por Código \n" +
              "(4) Buscar Filmes por Gênero \n" +
              "(5) Remover Filme \n"+
+             "(6) Reproduzir Filme Escolhido \n"+
              "(0) Voltar\n"+
             "----------------")
 
@@ -75,5 +111,7 @@ def exibir_menu_filme():
             menu_buscar_filmes_por_genero()
         elif op == 5:
             menu_remover()
+        elif op == 6:
+            menu_reproduzir_filme()
         elif op == 0:
             run_filme = False
