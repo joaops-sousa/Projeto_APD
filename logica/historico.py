@@ -30,4 +30,15 @@ def listar_historico_geral():
 def remover_todos_historicos():
     global historico_geral
     historico_geral = []
+
+def limpar_historico(cpf):
+    user = usuario.buscar_usuario(cpf)
+    if user == None:
+        return False
+    else:
+        for i in range(len(historico_geral)):
+            for h in historico_geral:
+                if h[0] == user:
+                    historico_geral.remove(h)            
+    return True
     

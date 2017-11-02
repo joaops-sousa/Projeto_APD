@@ -45,6 +45,16 @@ class TestHistorico(unittest.TestCase):
         self.assertEqual(1,f1[0])
         self.assertEqual(2,f2[0])
 
+    def test_limpar_historico(self):
+        historico.registrar_filme_assistido(1,111111)
+        historico.registrar_filme_assistido(1,222222)
+        historico.registrar_filme_assistido(2,111111)
+
+        historico.limpar_historico(111111)
+        filmes_assistidos = historico.listar_filmes_assistidos(111111)
+        self.assertIsNone(filmes_assistidos)
+        
+
     def test_remover_todos_historicos(self):
         historico.registrar_filme_assistido(1,111111)
         historico.registrar_filme_assistido(1,222222)
