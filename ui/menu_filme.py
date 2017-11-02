@@ -1,5 +1,6 @@
 from logica import filme
 from logica import reproducao
+from logica import nota
 
 def menu_adicionar():
     print("\nAdicionar Filme \n")
@@ -83,6 +84,12 @@ def menu_reproduzir_filme():
         print("Dados não encontrados.")
     else:
         menu_player()
+        print("\nAvalie o filme assistido \n")
+        avaliacao = int(input("Nota (0 - 10): "))
+        while avaliacao < 0 or avaliacao > 10:
+            avaliacao = int(input("Nota inválida. Digite novamente: "))
+        nota.avaliar_filme(cpf,codigo,avaliacao)
+        print("\nObrigado pela avaliação.")
 
 def exibir_menu_filme():
     run_filme = True

@@ -49,7 +49,7 @@ def menu_exibir_historico():
         print("\nSeu histórico está vazio.")
     else:
         imprimir_usuario(u)
-        print("\nHistórico: ")
+        print("\nHistórico: \n")
         for h in hist:
             print(h)
 
