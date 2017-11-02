@@ -17,7 +17,12 @@ def listar_avaliacoes():
     return avaliacoes
 
 def listar_avaliacoes_por_filme(cod_filme):
+    movie = filme.buscar_filme(cod_filme)
     aux = []
+    
+    if movie == None:
+        return False
+    
     for a in avaliacoes:
         if cod_filme == a[2]:
             aux.append(a)
