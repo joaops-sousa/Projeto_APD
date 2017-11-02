@@ -45,7 +45,10 @@ def menu_exibir_historico():
     cpf = int(input("CPF: "))
     u = usuario.buscar_usuario(cpf)
     hist = historico.listar_filmes_assistidos(cpf)
-    if hist == None:
+
+    if u == None:
+        print("\nUsuário não encontrado.")
+    elif hist == None:
         print("\nSeu histórico está vazio.")
     else:
         imprimir_usuario(u)
